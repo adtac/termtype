@@ -1,0 +1,105 @@
+<Sleep:2000>
+# My editor has been setup to use four spaces for indentation by default.
+<Return>
+<Sleep:300>
+
+vim test.py
+<Return>
+<Sleep:1700>
+
+def something():
+a=5
+<Sleep:400>
+  
+<Sleep:1000>
+<Escape>
+<Sleep:200>
+
+:wq
+<Sleep:200>
+<Return>
+<Sleep:1000>
+
+coala
+<Sleep:200>
+ --bears=SpaceConsistencyBear
+<Sleep:200>
+ --files=test.py
+<Sleep:200>
+ --save
+<Return>
+<Sleep:3000>
+nope
+<Return>
+<Sleep:5000>
+
+2
+<Return>
+<Sleep:3500>
+0
+<Return>
+<Sleep:1000>
+vim test.py
+<Return>
+<Sleep:1700>
+<Ctrl+End>
+<Sleep:500>
+ # Trailing whitespaces removed
+<Ctrl+Home>
+<Sleep:1000>
+<Down>
+<Sleep:1000>
+<Right>
+<Sleep:1000>
+<Left>
+<Sleep:1000>
+<Right>
+<Sleep:1000>
+<Escape>
+:wq
+<Return>
+# As you saw, the four spaces were automatically converted to a tab.
+<Return>
+<Sleep:200>
+ls .coafile
+<Return>
+<Sleep:1000>
+# The configuration file was automatically generated for us.
+<Return>
+<Sleep:100>
+vim .coafile
+<Return>
+<Sleep:2000>
+<Ctrl+Home>
+<Down>
+<Sleep:200>
+<End>
+<Sleep:200>
+, PEP8Bear
+<Sleep:300>
+<Escape>
+<Sleep:300>
+:wq
+<Return>
+<Sleep:1500>
+coala
+<Return>
+<Sleep:6000>
+3
+<Return>
+<Sleep:4000>
+2
+<Return>
+<Sleep:3000>
+0
+<Return>
+<Sleep:1000>
+cat test.py
+<Return>
+<Sleep:500>
+# The code is now PEP8 compliant.
+<Return>
+<Sleep:500>
+# We've combined language independent and language dependent code analysis!
+<Return>
+
