@@ -20,8 +20,8 @@ def shellquote(s):
 
 def main():
     verify_deps()
-    if len(sys.argv) != 2:
-        print("Usage: termtype <input_file>")
+    if len(sys.argv) < 2:
+        print("Usage: termtype <input_file> [start_pos]")
         sys.exit(1)
     if not os.path.isfile(sys.argv[1]):
         print(sys.argv[1] + " does exist.")
@@ -30,11 +30,16 @@ def main():
     with open(sys.argv[1], "r") as f:
         lines = f.read().splitlines()
 
+    start_pos = 0
+    if len(sys.argv) > 2:
+        start_pos = int(sys.argv[2])
+    lines = lines[start_pos:]
+
     segments = [[]]
     dividers = []
     for line in lines:
         if line == "":
-            continue
+            line = "<Sleep:1000>"
         if line[0] == "<" and line[-1] == ">":
             segments.append([])
             dividers.append(line[1:-1])
@@ -48,13 +53,15 @@ def main():
         for line in segment:
             for char in line:
                 call(["xdotool", "type", char])
-                time.sleep(0.05)
+                time.sleep(0.075)
             if i != len(segment) - 1:
                 call(["xdotool", "key", "Return"])
             i += 1
         if divider.startswith("Sleep"):
-            duration = float(divider.split(":")[1])/1000.0
+            duration = float(divider.split(":")[1])/631.00
             time.sleep(duration)
+        elif divider.startswith("lclick"):
+            call(["xdotool", "click", "1"])
         else:
             call(["xdotool", "key", divider])
 

@@ -1,0 +1,370 @@
+<Sleep:2000>
+asciinema
+<Return>
+<Sleep:4000>
+# Let's create a repo
+<Return>
+<Sleep:800>
+git init
+<Return>
+<Sleep:800>
+
+# Now we'll create a file
+<Return>
+<Sleep:800>
+vim file_1.py
+<Return>
+<Sleep:1000>
+iContent 1
+<Escape>
+<Sleep:900>
+:wq
+<Return>
+<Sleep:1000>
+ls
+<Return>
+<Sleep:800>
+# We have our file
+<Return>
+<Sleep:900>
+git status
+<Return>
+<Sleep:1000>
+
+# This file is untracked
+<Return>
+<Sleep:900>
+git add -A
+<Return>
+<Sleep:900>
+git status
+<Return>
+<Sleep:900>
+# Now the file is tracked
+<Return>
+
+# We can commit this file
+<Return>
+<Sleep:900>
+git commit
+<Return>
+
+ggiCommit head 1
+<Return>
+<Return>
+Commit body 1
+<Escape>
+<Sleep:900>
+:wq
+<Return>
+<Sleep:900>
+git status
+<Return>
+
+# Our repo is clean now.
+<Return>
+<Sleep:900>
+git log
+<Return>
+<Sleep:3000>
+q
+<Sleep:900>
+
+# Now let's quickly create some more commits
+<Return>
+
+clear
+<Return>
+
+vim file_1.py
+<Return>
+<Sleep:1000>
+o
+<Return>
+Edit 1 to file
+<Escape>
+<Sleep:1800>
+:wq
+<Return>
+<Sleep:1000>
+git status
+<Return>
+
+git diff
+<Return>
+
+<Sleep:1500>
+q
+
+# Let's add the changes we made
+<Return>
+
+git add -A
+<Return>
+
+git commit
+<Return>
+ggi
+
+Commit head 2
+<Return>
+
+<Return>
+
+Commit body 3 (I know this is wrong, we'll edit this later)
+<Escape>
+<Sleep:1800>
+:wq
+<Return>
+
+# Let's create another file
+<Return>
+
+clear
+<Return>
+
+vim file_2.py
+<Return>
+
+i
+<Sleep:500>
+Some content with a mistake
+<Escape>
+
+:wq
+<Return>
+
+git status
+<Return>
+
+# Let's add that file and commit it
+<Return>
+
+git add -A
+<Return>
+
+git commit -m "Commit message with a mistake"
+<Return>
+
+git log
+<Return>
+<Sleep:3000>
+q
+
+clear
+<Return>
+
+# Now say we want to edit the top most commit
+# because we made a mistake
+<Return>
+<Sleep:2000>
+vim file_2.py
+<Return>
+
+<Escape>
+:%d
+<Return>
+
+iCorrect content
+<Escape>
+<Sleep:2000>
+:wq
+<Return>
+
+git status
+<Return>
+
+git diff
+<Return>
+<Sleep:1800>
+
+q
+<Sleep:500>
+# We can amend the previous commit now
+<Return>
+
+# First stage the changes you made
+<Return>
+
+git add -A
+<Return>
+
+# Then amend the top most commit
+<Return>
+
+git commit --amend
+<Return>
+
+gg
+<Sleep:500>
+ddi
+<Sleep:500>
+Correct commit message
+<Return>
+<Escape>
+
+:wq
+<Return>
+
+git log
+<Return>
+<Sleep:3000>
+
+q
+<Sleep:200>
+
+clear
+<Return>
+
+# Now let's say we want to edit the commit behind the latest commit.
+<Return>
+
+# That commit is referred to as HEAD~1 (since it is one commit before HEAD)
+<Return>
+
+# This process is called rebasing. If we want to edit HEAD~1 we
+# need to rebase to HEAD~2
+<Return>
+
+git rebase --interactive HEAD~2
+<Return>
+
+ggO
+<Sleep:200>
+# Anything that starts with # is a comment
+<Return>
+
+# If we wanted to edit the 4th commit behind the top most commit, we
+# would give HEAD~5
+<Return>
+
+# Since we want to edit HEAD~1, we change the corresponding commit's 
+# "pick" to "edit"
+<Escape>
+
+j^daw
+
+i
+<Sleep:300>
+edit 
+<Escape>
+
+:wq
+<Return>
+
+# Now we are at the commit we wanted to edit
+<Return>
+
+git log
+<Return>
+<Sleep:2000>
+q
+<Sleep:200>
+
+# We can see the latest commit (this would now be the commit we wanted to edit)
+<Return>
+
+git show HEAD
+<Return>
+<Sleep:2000>
+q
+<Sleep:200>
+
+# Say we only want to change the commit message
+<Return>
+
+# Then we can do an empty commit to amend the top commit
+# (which is the original HEAD~1)
+<Return>
+
+git commit --amend
+<Return>
+
+3gg
+<Sleep:200>
+dd
+<Sleep:200>
+iCommit body 2
+<Escape>
+<Sleep:1000>
+
+:wq
+<Return>
+
+git log
+<Return>
+<Sleep:1800>
+q
+<Sleep:200>
+
+# But if we wanted to make a change to the files, we can do that too
+<Return>
+
+vim file_1.py
+<Return>
+
+Go
+<Return>
+
+Adding the edit from rebase
+<Escape>
+<Sleep:1800>
+:wq
+<Return>
+
+git status
+<Return>
+
+git diff
+<Return>
+<Sleep:1800>
+q
+
+# Now that we've made our change, we add them
+<Return>
+
+git add -A
+<Return>
+
+git status
+<Return>
+
+# We then amend these changes to the commit again
+<Return>
+
+git commit --amend
+<Return>
+
+:wq
+<Return>
+
+# Finally we continue the rebase
+<Return>
+
+# We changed only one "pick" to "edit". But we could, in principle,
+# change several. Then rebase would stop at each of those commits.
+<Return>
+
+git rebase --continue
+<Return>
+
+# Now we've returned to the original HEAD
+<Return>
+
+clear
+<Return>
+
+git log
+<Return>
+
+q
+<Sleep:500>
+# We can confirm that our changes actually took place by taking a
+# look at the HEAD~1 commit (the one we edited)
+<Return>
+
+git show HEAD~1
+<Return>
+
+q
+<Sleep:400>
