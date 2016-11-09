@@ -1,105 +1,74 @@
-<Sleep:2000>
-# My editor has been setup to use four spaces for indentation by default.
+rm .coafile
+asciinema rec
 <Return>
-<Sleep:300>
-
-vim test.py
+<Sleep:200>
+# Let's see what source code we have!
+ls
 <Return>
-<Sleep:1700>
-
-def something():
-a=5
-<Sleep:400>
-  
-<Sleep:1000>
-<Escape>
-<Sleep:200>
-
-:wq
-<Sleep:200>
+<Sleep:700>
+# Let's analyze Java for clones and spacing
+pip install coala-bears
+<Sleep:2500>
 <Return>
 <Sleep:1000>
-
-coala
+# We need PMD installed for this:
+export PATH=$PATH:~/Downloads/pmd-bin-5.4.2/bin
+# Simply tell coala what to do - bears
+# can be looked up at coala.io/languages
+<Return>
 <Sleep:200>
- --bears=SpaceConsistencyBear
-<Sleep:200>
- --files=test.py
-<Sleep:200>
- --save
+# We're analyzing spacing and checking for copy
+# and pasted code - normally you would need two
+# very different tools for that :)
+coala --files "**.java" \
+--bears CPDBear,SpaceConsistencyBear --save
 <Return>
-<Sleep:3000>
-nope
-<Return>
-<Sleep:5000>
-
-2
-<Return>
-<Sleep:3500>
-0
-<Return>
-<Sleep:1000>
-vim test.py
-<Return>
-<Sleep:1700>
-<Ctrl+End>
 <Sleep:500>
- # Trailing whitespaces removed
-<Ctrl+Home>
-<Sleep:1000>
-<Down>
-<Sleep:1000>
-<Right>
-<Sleep:1000>
-<Left>
-<Sleep:1000>
-<Right>
-<Sleep:1000>
-<Escape>
-:wq
+java
+<Sleep:1500>
 <Return>
-# As you saw, the four spaces were automatically converted to a tab.
+<Sleep:500>
+yeah
+<Sleep:1500>
 <Return>
-<Sleep:200>
-ls .coafile
-<Return>
+<Sleep:500>
+0
 <Sleep:1000>
-# The configuration file was automatically generated for us.
 <Return>
-<Sleep:100>
-vim .coafile
+<Sleep:500>
+0
+<Sleep:1000>
 <Return>
-<Sleep:2000>
-<Ctrl+Home>
-<Down>
-<Sleep:200>
-<End>
-<Sleep:200>
-, PEP8Bear
-<Sleep:300>
-<Escape>
-<Sleep:300>
-:wq
+<Sleep:500>
+vim .coafile  # coala generated a config for us!
+<Sleep:1500>
 <Return>
 <Sleep:1500>
+ldwijava
+<Escape>
+jjjjo
+# Let's add analysis for a whole new language!
+[python]
+bears = PEP8Bear
+files = **.py
+<Escape>
+<Sleep:2500>
+:wq
+<Return>
 coala
-<Return>
-<Sleep:6000>
-3
-<Return>
-<Sleep:4000>
-2
-<Return>
-<Sleep:3000>
 0
 <Return>
-<Sleep:1000>
-cat test.py
+<Sleep:1500>
+0
 <Return>
-<Sleep:500>
-# The code is now PEP8 compliant.
+<Sleep:1500>
+0
 <Return>
-<Sleep:500>
-# We've combined language independent and language dependent code analysis!
+<Sleep:1500>
+3
 <Return>
-
+<Sleep:2500>
+0
+<Return>
+<Sleep:1500>
+<Ctrl+D>

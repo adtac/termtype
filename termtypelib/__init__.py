@@ -53,7 +53,7 @@ def main():
         for line in segment:
             for char in line:
                 call(["xdotool", "type", char])
-                time.sleep(0.075)
+                time.sleep(0.04)
             if i != len(segment) - 1:
                 call(["xdotool", "key", "Return"])
             i += 1
