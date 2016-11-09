@@ -71,4 +71,24 @@ coala
 0
 <Return>
 <Sleep:1500>
+vim .coafile
+<Sleep:1500>
+<Return>
+<Sleep:1500>
+jjjjjjjjjo
+[markdown]
+bears = MarkdownBear
+files = **.md
+<Escape>
+<Sleep:1500>
+:wq
+<Return>
+coala markdown --apply-patches \
+# Run coala only on our markdown code, apply autofixes without asking
+<Return>
+<Sleep:2500>
+git diff
+<Return>
+<Sleep:2500>
+<Return>
 <Ctrl+D>
